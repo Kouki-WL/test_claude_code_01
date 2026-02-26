@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat Thing — チャット</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- ── Header ──────────────────────────────────────── -->
+    <header class="header">
+      <div class="header-inner">
+        <span class="header-icon" aria-hidden="true">💬</span>
+        <h1 class="header-title">Chat Thing</h1>
+        <span class="status-dot" id="statusDot" title="接続中"></span>
+      </div>
+    </header>
+
+    <!-- ── Chat window ──────────────────────────────────── -->
+    <main class="chat-window" id="chatWindow" role="log" aria-live="polite" aria-label="チャットメッセージ">
+
+      <!-- Welcome message rendered by JS, or you can hard-code one here -->
+      <div class="message bot">
+        <div class="bubble">
+          こんにちは！何かお手伝いできることはありますか？
+        </div>
+      </div>
+
+    </main>
+
+    <!-- ── Input bar ────────────────────────────────────── -->
+    <footer class="input-bar">
+      <form class="input-form" id="chatForm" autocomplete="off">
+        <textarea
+          id="userInput"
+          class="input-field"
+          placeholder="メッセージを入力… (Shift+Enter で送信)"
+          rows="1"
+          aria-label="メッセージ入力"
+          required
+        ></textarea>
+        <button type="submit" class="send-btn" id="sendBtn" aria-label="送信">
+          <!-- Paper-plane icon (inline SVG, no external dependency) -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+          </svg>
+        </button>
+      </form>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
