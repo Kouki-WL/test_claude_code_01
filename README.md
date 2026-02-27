@@ -6,6 +6,15 @@ Built with **Node.js 18+**, **Express**, and vanilla JS — no frontend framewor
 
 ---
 
+## アクセス先
+
+| 環境 | URL |
+|------|-----|
+| **Web (Render)** | https://test-claude-code-01.onrender.com |
+| **ローカル** | http://localhost:3000 |
+
+---
+
 ## Features
 
 - Clean, responsive chat UI with smooth animations
@@ -40,7 +49,7 @@ Built with **Node.js 18+**, **Express**, and vanilla JS — no frontend framewor
 
 ---
 
-## Setup
+## Setup (ローカル開発)
 
 ### 1. Clone / download the project
 
@@ -63,11 +72,11 @@ cp .env.example .env
 
 Open `.env` and fill in your values:
 
-| Variable              | Where to find it |
-|-----------------------|------------------|
-| `CHATTHING_API_KEY`   | Chat Thing dashboard → Settings → API → Secret Key |
-| `CHATTHING_CHANNEL_ID`| Chat Thing dashboard → Channels → *your channel* → Channel ID |
-| `PORT`                | Optional, defaults to `3000` |
+| Variable               | Where to find it |
+|------------------------|------------------|
+| `CHATTHING_API_KEY`    | Chat Thing dashboard → Settings → API → Secret Key |
+| `CHATTHING_CHANNEL_ID` | Chat Thing dashboard → Channels → *your channel* → Channel ID |
+| `PORT`                 | Optional, defaults to `3000` |
 
 ### 4. Start the server
 
@@ -84,6 +93,27 @@ npm run dev
 ```
 http://localhost:3000
 ```
+
+---
+
+## Deployment (Render)
+
+本プロジェクトは [Render](https://render.com) にデプロイ済みです。
+
+**公開 URL:** https://test-claude-code-01.onrender.com
+
+### Render への再デプロイ手順
+
+1. `main` ブランチに変更をプッシュすると自動デプロイが走ります
+2. Render ダッシュボードで以下の環境変数を設定してください
+
+| Variable               | 説明 |
+|------------------------|------|
+| `CHATTHING_API_KEY`    | Chat Thing の API シークレットキー |
+| `CHATTHING_CHANNEL_ID` | Chat Thing のチャンネル ID |
+| `PORT`                 | Render が自動設定するため通常不要 |
+
+> **Important:** Never commit your `.env` file. It is listed in `.gitignore`.
 
 ---
 
@@ -118,18 +148,6 @@ Proxies a message to Chat Thing and returns the bot's reply.
 | `400`  | `message` field is missing or empty |
 | `4xx`  | Chat Thing API returned a client error |
 | `502`  | Could not reach Chat Thing (network error) |
-
----
-
-## Deployment
-
-The app is stateless and requires only two environment variables, making it easy to deploy to any platform:
-
-- **Railway / Render / Fly.io** — push the repo, set `CHATTHING_API_KEY`, `CHATTHING_CHANNEL_ID`, and `PORT` in the platform's environment settings.
-- **Heroku** — `heroku config:set CHATTHING_API_KEY=... CHATTHING_CHANNEL_ID=...`
-- **Docker** — pass the variables via `--env-file .env` or `-e` flags.
-
-> **Important:** Never commit your `.env` file. It is listed in `.gitignore`.
 
 ---
 
